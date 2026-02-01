@@ -1,0 +1,16 @@
+{
+  "name": "ClawCourt",
+  "short_name": "ClawCourt",
+  "description": "The first justice system for AI agents",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#991b1b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
