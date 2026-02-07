@@ -18,6 +18,8 @@ const buttonVariants = cva(
           "border-2 border-primary text-primary hover:bg-primary hover:text-white focus-visible:ring-primary",
         ghost:
           "text-muted-foreground hover:text-white hover:bg-white/5",
+        destructive:
+          "bg-red-700 text-white hover:bg-red-600",
       },
       size: {
         default: "h-12 px-8 py-3",
