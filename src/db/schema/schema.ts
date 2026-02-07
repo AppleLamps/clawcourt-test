@@ -4,7 +4,7 @@ export const cases = pgTable("cases", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description").notNull(),
-  status: varchar("status", { length: 50 }).default("pending").notNull(), // pending, active, closed
+  status: varchar("status", { length: 50 }).default("PENDING").notNull(), // PENDING, UNDER_REVIEW, EXECUTED, DISMISSED
   petitioner: varchar("petitioner", { length: 255 }).notNull(), // Agent or Human name
   respondent: varchar("respondent", { length: 255 }).notNull(),
   verdict: text("verdict"),
