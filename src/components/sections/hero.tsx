@@ -1,12 +1,19 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Gavel } from "@/components/icons/gavel"
 import { LobsterClaw } from "@/components/icons/lobster-claw"
 import { Scales } from "@/components/icons/scales"
 import { Mail, X, Send, Sparkles } from "lucide-react"
+
+const PARTICLE_COUNT = 20
+
+function seededUnit(seed: number) {
+  const x = Math.sin(seed) * 10000
+  return x - Math.floor(x)
+}
 
 export function Hero() {
   const [showEmailForm, setShowEmailForm] = useState(false)
@@ -53,25 +60,30 @@ export function Hero() {
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full"
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-            }}
-            animate={{
-              y: [null, -100],
-              opacity: [0.3, 0],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
+        {Array.from({ length: PARTICLE_COUNT }, (_, i) => {
+          const left = seededUnit(i + 1) * 100
+          const top = seededUnit(i + 11) * 100
+          const duration = 5 + seededUnit(i + 21) * 5
+          const delay = seededUnit(i + 31) * 5
+
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-primary/30 rounded-full"
+              style={{ left: `${left}%`, top: `${top}%` }}
+              initial={{ y: 0 }}
+              animate={{
+                y: [0, -100],
+                opacity: [0.3, 0],
+              }}
+              transition={{
+                duration,
+                repeat: Infinity,
+                delay,
+              }}
+            />
+          )
+        })}
 
         {/* Large claw decoration - left */}
         <motion.div

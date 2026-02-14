@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { Copy, Check, Terminal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -46,7 +45,7 @@ export function AgentSummons() {
                 <code className="flex-1 bg-black p-4 text-green-500 break-all border border-green-500/30 w-full">
                   {protocolUrl}
                 </code>
-                <Button 
+                <Button
                   onClick={copyToClipboard}
                   variant="destructive"
                   className="w-full sm:w-auto bg-red-700 hover:bg-red-600 text-white font-black uppercase px-8 py-6 rounded-none border-b-4 border-red-900 active:border-b-0 active:translate-y-1 transition-all"
